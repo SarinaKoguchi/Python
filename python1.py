@@ -20,31 +20,38 @@ print("平均：", (num1 + num2) / 2)
 
 #課題３
 print("身長を入力してください")
-height = float(input())
+height_m = float(input())
 print("体重を入力してください")
 weight = float(input())
 
-bmi = weight / height**2
+bmi = weight / height_m**2
 
 if bmi < 18.5:
     result = "やせ"
-elif bmi >= 18.5 or bmi < 25:
+elif bmi >= 18.5 and bmi < 25:
     result = "標準"
-elif bmi >= 25 or bmi < 30:
+elif bmi >= 25 and bmi < 30:
     result = "肥満"
 else:
     result = "高度肥満"
 
 print("<実行結果>")
-print("あなたは「" , result, "」です。" )
+print(f"あなたは「{result}」です。")
 
 #課題３
 debt = 250000
-y_interest_rate = 14.0
+y_interest_rate = 0.14
 m_interest_rate = y_interest_rate / 12
 amount_repaid = 30000
-
-remaining_debt = debt * m_interest_rate - amount_repaid
+i = 1
 
 print("<実行結果>")
-print("ヶ月目：", "返済額＝", ",", remaining_debt)
+while debt >= 0:
+    if debt >= amount_repaid:
+        debt = debt * (m_interest_rate + 1) - amount_repaid
+        print(f"{i}ヶ月目：返済額＝{amount_repaid}円,残り{debt}円")
+    else:
+        debt = debt * (m_interest_rate + 1)
+        print(f"{i}ヶ月目：返済額＝{debt}円,返済完了。")
+        break
+    i = i + 1
