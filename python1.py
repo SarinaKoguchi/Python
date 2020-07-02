@@ -40,17 +40,16 @@ print(f"あなたは「{result}」です。")
 
 # 課題４
 debt = 250000
-y_interest_rate = 0.14
-m_interest_rate = y_interest_rate / 12
+interest_rate = 0.14
 amount_repaid = 30000
-month = 1
+month = 0
 
 print("<実行結果>")
 while debt >= 0:
-    remaining_debt = debt * (m_interest_rate + 1) - amount_repaid
-    if debt >= amount_repaid:
-        print(f"{month}ヶ月目：返済額＝{amount_repaid}円,残り{remaining_debt}円")
-    else:
-        print(f"{month}ヶ月目：返済額＝{debt}円,返済完了。")
-    debt = remaining_debt
     month += 1
+    interest_debt = debt * (interest_rate / 12 + 1)
+    debt = interest_debt - amount_repaid
+    if interest_debt >= amount_repaid:
+        print(f"{month}ヶ月目：返済額＝{amount_repaid}円,残り{debt}円")
+    else:
+        print(f"{month}ヶ月目：返済額＝{interest_debt}円,返済完了。")
